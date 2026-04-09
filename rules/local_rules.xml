@@ -1,0 +1,33 @@
+<group name="ssh,bruteforce,">
+
+  <!-- T1110.001: Brute force against non-existent users -->
+  <rule id="100001" level="10" frequency="4" timeframe="60">
+    <if_matched_sid>5710</if_matched_sid>
+    <same_source_ip />
+    <description>SSH Brute Force Attack Detected: Multiple failed attempts from $(srcip)</description>
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+  </rule>
+
+  <!-- T1110.001: Brute force against valid users (root, vboxuser etc) -->
+  <rule id="100002" level="10" frequency="4" timeframe="60">
+    <if_matched_sid>5760</if_matched_sid>
+    <same_source_ip />
+    <description>SSH Brute Force Against Valid User: Multiple failed attempts from $(srcip)</description>
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+  </rule>
+
+  <!-- T1078: Account compromise after brute force -->
+  <rule id="100003" level="14" timeframe="300">
+    <if_matched_sid>100002</if_matched_sid>
+    <same_source_ip />
+    <description>CRITICAL: Successful login after Brute Force from $(srcip) - Possible Account Compromise</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+  </rule>
+
+</group>
