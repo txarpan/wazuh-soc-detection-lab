@@ -34,6 +34,7 @@ and practice alert triage — all mapped to the MITRE ATT&CK framework.
 |---|--------|----------------|----------------|----------|
 | 1 | SSH Brute Force (Hydra) | T1110.001 — Password Guessing | Custom Rule 100002 | High |
 | 2 | Post-Brute-Force Activity | T1078 — Valid Accounts | Custom Rule 100003 | Critical |
+| 3 | Nmap SYN Port Scan | T1046 — Network Service Discovery | Custom Rules 100004/100005 | Medium |
 
 ---
 
@@ -46,6 +47,8 @@ Located in `/rules/`
 | 100001 | SSH Brute Force — Invalid Users | 4+ failures/60s on rule 5710 | T1110.001 |
 | 100002 | SSH Brute Force — Valid Users | 4+ failures/60s on rule 5760 | T1110.001 |
 | 100003 | Post-Brute-Force Account Compromise | Login after brute force from same IP | T1078 |
+| 100005 | UFW Blocked Connection | UFW BLOCK kernel log match | T1046 |
+| 100004 | Port Scan Detected | 20+ UFW blocks in 10 seconds | T1046 |
 
 ---
 
@@ -54,6 +57,7 @@ Located in `/rules/`
 | ID | Title | Status |
 |----|-------|--------|
 | [CS-001](report/CS-001-SSH-BruteForce.md) | SSH Brute Force Attack Detection | ✅ Complete |
+| [CS-002](report/CS-002-PortScan-Nmap.md) | Network Port Scan Detection | ✅ Complete |
 
 ---
 
