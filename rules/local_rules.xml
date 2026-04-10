@@ -50,5 +50,36 @@
     </mitre>
   </rule>
 
+<!-- T1548.003: Sudo abuse — sensitive file access -->
+  <rule id="100006" level="12">
+    <if_sid>5402</if_sid>
+    <match>COMMAND=/usr/bin/cat /etc/shadow</match>
+    <description>CRITICAL: Sudo used to read /etc/shadow — Possible credential harvesting by $(dstuser)</description>
+    <mitre>
+      <id>T1548.003</id>
+      <id>T1003.008</id>
+    </mitre>
+  </rule>
+
+  <!-- T1548.003: Sudo abuse — privilege confirmation -->
+  <rule id="100007" level="10">
+    <if_sid>5402</if_sid>
+    <match>COMMAND=/usr/bin/whoami</match>
+    <description>Sudo used to confirm root privilege — Possible post-exploitation activity by $(dstuser)</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+  </rule>
+
+  <!-- T1548.003: Sudo abuse — passwd file access -->
+  <rule id="100008" level="10">
+    <if_sid>5402</if_sid>
+    <match>COMMAND=/usr/bin/cat /etc/passwd</match>
+    <description>Sudo used to read /etc/passwd — Possible user enumeration by $(dstuser)</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+  </rule>
+
 
 </group>
