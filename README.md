@@ -13,6 +13,7 @@ and practice alert triage — all mapped to the MITRE ATT&CK framework.
 | SIEM | Wazuh 4.14.3 (Dockerized, single-node) |
 | Attacker | Kali Linux 2023 — 192.168.0.161 |
 | Victim (Linux) | Ubuntu 24.04.4 LTS — 192.168.0.133 |
+| Victim (Windows) | Windows 10 Home — 192.168.0.144 |
 | Host | Fedora Linux — 192.168.0.224 |
 | Tools | Hydra, Nmap, Wazuh Agent |
 
