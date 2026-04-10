@@ -95,6 +95,6 @@ wazuh-soc-detection-lab/
 ## Author
 
 **Arpan Mukherjee** 
-Cybersecurity Engineer | Detection Engineering | SOC Analysis 
+Cybersecurity Engineer | Detection Engineering | SOC Analysis |
 RHCSA Certified | Penetration Tester | Security Researcher | BugBounty Hunter
 [GitHub](https://github.com/txarpan)
