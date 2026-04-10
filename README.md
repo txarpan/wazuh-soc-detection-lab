@@ -69,14 +69,19 @@ Located in `/rules/`
 
 ## Repository Structure
 
+```
 wazuh-soc-detection-lab/
 ├── README.md
-├── rules/                    # Custom Wazuh detection rules
-├── report/                   # Attack case studies
-│   └── CS-001-SSH-BruteForce.md
-├── attack-simulation/        # Attack scripts and wordlists
-├── logs/                     # Sample log evidence
-└── screenshots/              # Wazuh dashboard evidence
+├── rules/
+│   └── local_rules.xml          # 8 custom detection rules, MITRE mapped
+├── report/
+│   ├── CS-001-SSH-BruteForce.md         # Hydra brute force detection
+│   ├── CS-002-PortScan-Nmap.md          # Nmap SYN scan detection
+│   └── CS-003-PrivilegeEscalation.md    # Sudo abuse & credential access
+├── attack-simulation/           # Attack scripts and wordlists
+├── logs/                        # Sample log evidence
+└── screenshots/                 # Wazuh dashboard evidence
+```
 
 ---
 
