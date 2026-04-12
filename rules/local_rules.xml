@@ -81,5 +81,25 @@
     </mitre>
   </rule>
 
+<!-- T1110.001: Windows Brute Force Detection -->
+  <rule id="100009" level="10" frequency="5" timeframe="60">
+    <if_matched_sid>60122</if_matched_sid>
+    <same_field>win.eventdata.targetUserName</same_field>
+    <description>Windows Brute Force Detected: Multiple failed logons for $(win.eventdata.targetUserName)</description>
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+  </rule>
+
+  <!-- T1078: Windows Successful Login After Brute Force -->
+  <rule id="100010" level="14" timeframe="300">
+    <if_matched_sid>100009</if_matched_sid>
+    <same_field>win.eventdata.targetUserName</same_field>
+    <description>CRITICAL: Successful Windows login after Brute Force — Possible Account Compromise</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+  </rule>
+
 
 </group>
