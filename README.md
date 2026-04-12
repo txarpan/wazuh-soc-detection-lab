@@ -38,6 +38,7 @@ and practice alert triage — all mapped to the MITRE ATT&CK framework.
 | 3 | Nmap SYN Port Scan | T1046 — Network Service Discovery | Custom Rules 100004/100005 | Medium |
 | 4 | Privilege Escalation via Sudo | T1548.003 — Sudo Abuse | Custom Rules 100006/100007/100008 | High |
 | 5 | Credential Access — /etc/shadow | T1003.008 — /etc/passwd and /etc/shadow | Custom Rule 100006 | Critical |
+| 6 | Windows Brute Force (runas) | T1110.001 — Password Guessing | Custom Rule 100009 | High |
 
 ---
 
@@ -55,6 +56,8 @@ Located in `/rules/`
 | 100006 | Sudo read /etc/shadow — Credential Harvesting | sudo cat /etc/shadow detected | T1548.003, T1003.008 |
 | 100007 | Sudo privilege confirmation | sudo whoami detected | T1548.003 |
 | 100008 | Sudo read /etc/passwd — User Enumeration | sudo cat /etc/passwd detected | T1548.003 |
+| 100009 | Windows Brute Force Detection | 5+ failed logons/60s on rule 60122 | T1110.001 |
+| 100010 | Windows Post-Brute-Force Compromise | Login after brute force | T1078 |
 
 ---
 
@@ -65,8 +68,11 @@ Located in `/rules/`
 | [CS-001](report/CS-001-SSH-BruteForce.md) | SSH Brute Force Attack Detection | ✅ Complete |
 | [CS-002](report/CS-002-PortScan-Nmap.md) | Network Port Scan Detection | ✅ Complete |
 | [CS-003](report/CS-003-PrivilegeEscalation.md) | Privilege Escalation & Credential Access | ✅ Complete |
+| [CS-004](report/CS-004-Windows-BruteForce.md) | Windows Brute Force Detection | ✅ Complete |
 
 ---
+
+## Repository Structure
 
 ## Repository Structure
 
@@ -74,28 +80,34 @@ Located in `/rules/`
 wazuh-soc-detection-lab/
 ├── README.md
 ├── rules/
-│   └── local_rules.xml          # 8 custom detection rules, MITRE mapped
+│   └── local_rules.xml              # 10 custom detection rules, MITRE mapped
 ├── report/
-│   ├── CS-001-SSH-BruteForce.md         # Hydra brute force detection
-│   ├── CS-002-PortScan-Nmap.md          # Nmap SYN scan detection
-│   └── CS-003-PrivilegeEscalation.md    # Sudo abuse & credential access
-├── attack-simulation/           # Attack scripts and wordlists
-├── logs/                        # Sample log evidence
-└── screenshots/                 # Wazuh dashboard evidence
+│   ├── CS-001-SSH-BruteForce.md     # Hydra SSH brute force detection
+│   ├── CS-002-PortScan-Nmap.md      # Nmap SYN port scan detection
+│   ├── CS-003-PrivilegeEscalation.md # Sudo abuse & credential access
+│   └── CS-004-Windows-BruteForce.md # Windows failed logon detection
+├── attack-simulation/               # Attack scripts and wordlists
+├── logs/                            # Sample log evidence
+└── screenshots/                     # Wazuh dashboard evidence
+    ├── wazuh-rule100003-alert-detail.png
+    ├── wazuh-threat-hunting-timeline.png
+    ├── wazuh-rule100004-portscan-detected.png
+    ├── wazuh-rule100006-privesc-detected.png
+    └── wazuh-rule100009-windows-bruteforce.png
 ```
 
 ---
 
 ## Tools & Technologies
 
-`Wazuh SIEM` `Docker` `Kali Linux` `Ubuntu` `Hydra` 
-`MITRE ATT&CK` `Bash` `SSH` `Linux`
+`Wazuh SIEM` `Docker` `Kali Linux` `Ubuntu` `Windows 10` `Hydra` 
+`Nmap` `MITRE ATT&CK` `Bash` `PowerShell` `SSH` `Linux`
 
 ---
 
 ## Author
 
 **Arpan Mukherjee** 
-Cybersecurity Engineer | Detection Engineering | SOC Analysis |
+Cybersecurity Engineer | Detection Engineering | SOC Analyst |
 RHCSA Certified | Penetration Tester | Security Researcher | BugBounty Hunter
 [GitHub](https://github.com/txarpan)
