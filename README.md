@@ -74,36 +74,41 @@ Located in `/rules/`
 
 ## Repository Structure
 
-## Repository Structure
-
 ```
 wazuh-soc-detection-lab/
 ├── README.md
 ├── rules/
-│   └── local_rules.xml              # 10 custom detection rules, MITRE mapped
+│   └── local_rules.xml                    # 10 custom detection rules, MITRE mapped
 ├── report/
-│   ├── CS-001-SSH-BruteForce.md     # Hydra SSH brute force detection
-│   ├── CS-002-PortScan-Nmap.md      # Nmap SYN port scan detection
-│   ├── CS-003-PrivilegeEscalation.md # Sudo abuse & credential access
-│   └── CS-004-Windows-BruteForce.md # Windows failed logon detection
-├── attack-simulation/               # Attack scripts and wordlists
-├── logs/                            # Sample log evidence
-└── screenshots/                     # Wazuh dashboard evidence
-    ├── wazuh-rule100003-alert-detail.png
-    ├── wazuh-threat-hunting-timeline.png
-    ├── wazuh-rule100004-portscan-detected.png
-    ├── wazuh-rule100006-privesc-detected.png
-    └── wazuh-rule100009-windows-bruteforce.png
+│   ├── CS-001-SSH-BruteForce.md           # Hydra SSH brute force detection
+│   ├── CS-002-PortScan-Nmap.md            # Nmap SYN port scan detection
+│   ├── CS-003-PrivilegeEscalation.md      # Sudo abuse & credential access
+│   ├── CS-004-Windows-BruteForce.md       # Windows failed logon detection
+│   └── FP-Tuning-Report.md               # False positive analysis & tuning
+├── attack-simulation/
+│   └── auto-response/
+│       ├── block_attacker.py              # SOAR auto-response script
+│       └── README.md                     # Script documentation & proof
+├── logs/                                  # Sample log evidence
+└── screenshots/                           # Wazuh dashboard evidence
 ```
 
 ---
 
 ## Tools & Technologies
 
-`Wazuh SIEM` `Docker` `Kali Linux` `Ubuntu` `Windows 10` `Hydra` 
-`Nmap` `MITRE ATT&CK` `Bash` `PowerShell` `SSH` `Linux`
+`Wazuh SIEM` `Docker` `Kali Linux` `Ubuntu` `Windows 10`
+`Hydra` `Nmap` `Python` `MITRE ATT&CK` `Bash` `PowerShell`
+`UFW` `SSH` `Linux` `VirtualBox`
 
 ---
+
+## SOAR Automation
+
+Basic auto-response script (`attack-simulation/auto-response/block_attacker.py`)
+monitors Wazuh API for Rule 100003 alerts and automatically blocks
+attacker IPs via UFW. Successfully authenticated to Wazuh API during
+lab testing. See script README for execution proof and usage.
 
 ## Author
 
