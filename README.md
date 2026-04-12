@@ -26,6 +26,9 @@ and practice alert triage — all mapped to the MITRE ATT&CK framework.
 - Simulating attacks mapped to MITRE ATT&CK techniques
 - Triaging and investigating alerts as a SOC analyst
 - Documenting findings in professional case study format
+- Multi-platform detection across Linux and Windows endpoints
+- False positive tuning and alert noise reduction
+- Basic SOAR automation for automated attacker IP blocking
 
 ---
 
@@ -51,8 +54,8 @@ Located in `/rules/`
 | 100001 | SSH Brute Force — Invalid Users | 4+ failures/60s on rule 5710 | T1110.001 |
 | 100002 | SSH Brute Force — Valid Users | 4+ failures/60s on rule 5760 | T1110.001 |
 | 100003 | Post-Brute-Force Account Compromise | Login after brute force from same IP | T1078 |
-| 100005 | UFW Blocked Connection | UFW BLOCK kernel log match | T1046 |
 | 100004 | Port Scan Detected | 20+ UFW blocks in 10 seconds | T1046 |
+| 100005 | UFW Blocked Connection | UFW BLOCK kernel log match | T1046 |
 | 100006 | Sudo read /etc/shadow — Credential Harvesting | sudo cat /etc/shadow detected | T1548.003, T1003.008 |
 | 100007 | Sudo privilege confirmation | sudo whoami detected | T1548.003 |
 | 100008 | Sudo read /etc/passwd — User Enumeration | sudo cat /etc/passwd detected | T1548.003 |
