@@ -19,8 +19,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Configuration
 WAZUH_API    = "https://localhost:55000"
-WAZUH_USER   = "wazuh"
-WAZUH_PASS   = "wazuh"
+WAZUH_USER   = "wazuh-wui"
+WAZUH_PASS   = "MyS3cr37P450r.*-"
 TARGET_RULE  = "100003"
 LOG_FILE     = "/tmp/auto-response.log"
 WHITELIST    = ["192.168.0.224", "127.0.0.1"]
