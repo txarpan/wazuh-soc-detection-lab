@@ -53,7 +53,7 @@
 <!-- T1548.003: Sudo abuse — sensitive file access -->
   <rule id="100006" level="12">
     <if_sid>5402</if_sid>
-    <match>COMMAND=/usr/bin/cat /etc/shadow</match>
+    <regex>COMMAND=.*cat /etc/shadow</regex>
     <description>CRITICAL: Sudo used to read /etc/shadow — Possible credential harvesting by $(dstuser)</description>
     <mitre>
       <id>T1548.003</id>
